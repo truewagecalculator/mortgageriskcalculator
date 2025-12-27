@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Privacy Policy — Mortgage Stress Test Tool</title>
+    <meta
+      name="description"
+      content="Privacy Policy for Mortgage Stress Test Tool. Learn how data is handled, including cookies and advertising."
+    />
+    <link
+      rel="canonical"
+      href="https://mortgageriskcalculator.com/privacy.html"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <a class="brand" href="./index.html">
+          <span class="brand-name">MortgageRiskCalculator.com</span>
+        </a>
+
+        <!-- Desktop nav -->
+        <nav class="nav nav-desktop" aria-label="Primary">
+          <a class="nav-link active" href="./index.html">Tool</a>
+          <a class="nav-link" href="./learn.html">Learn</a>
+          <a class="nav-link" href="./about.html">About</a>
+          <a class="nav-link" href="./contact.html">Contact</a>
+          <a class="nav-link" href="./privacy.html">Privacy</a>
+        </nav>
+
+        <!-- Mobile menu button -->
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-label="Open menu"
+          aria-controls="mobileMenu"
+          aria-expanded="false"
+        >
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      </div>
+
+      <!-- Mobile dropdown menu -->
+      <div class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
+        <a class="nav-link active" href="./index.html">Tool</a>
+        <a class="nav-link" href="./learn.html">Learn</a>
+        <a class="nav-link" href="./about.html">About</a>
+        <a class="nav-link" href="./contact.html">Contact</a>
+        <a class="nav-link" href="./privacy.html">Privacy</a>
+      </div>
+    </header>
+
+    <main class="container">
+      <article class="doc">
+        <div class="doc-head">
+          <h1 class="h1">Privacy Policy</h1>
+          <p class="lead">
+            This page explains what information is collected and how it’s used.
+            We aim to keep things minimal and privacy-first.
+          </p>
+        </div>
+
+        <section class="doc-card">
+          <h2>Summary</h2>
+          <ul>
+            <li>
+              The tool runs in your browser and calculates results locally.
+            </li>
+            <li>We do not require accounts to use the tool.</li>
+            <li>
+              We may use analytics and advertising partners that set cookies
+              (see below).
+            </li>
+          </ul>
+
+          <h2>Information you enter into the tool</h2>
+          <p>
+            The Mortgage Stress Test Tool asks for numbers like loan amount,
+            rate, income, expenses, and savings. These inputs are used to
+            calculate results directly in your browser.
+          </p>
+          <p>
+            <strong>We do not intentionally collect or store</strong> the
+            financial values you enter into the tool.
+          </p>
+
+          <h2>Cookies and analytics</h2>
+          <p>
+            We may use standard analytics tools to understand how the site is
+            used (for example: page views, browser type, approximate location at
+            a city/region level, and general interaction data). This helps
+            improve performance, content, and usability.
+          </p>
+
+          <h2>Advertising (Google AdSense)</h2>
+          <p>
+            This site may display ads served by Google and its partners. These
+            partners may use cookies or similar technologies to show ads based
+            on visits to this and other websites.
+          </p>
+          <p>
+            You can learn more about how Google uses data in advertising and how
+            to control ad personalization: check Google’s advertising and
+            privacy settings in your Google account.
+          </p>
+
+          <h2>Do Not Sell / Share (California / CPRA)</h2>
+          <p>
+            Depending on your location, you may have rights to opt out of
+            certain data sharing for advertising purposes. Where applicable, you
+            can manage cookie settings through your browser and Google’s ad
+            controls.
+          </p>
+
+          <h2>Third-party links</h2>
+          <p>
+            Our pages may link to external websites. We’re not responsible for
+            their privacy practices. Review their policies if you visit them.
+          </p>
+
+          <h2>Children’s privacy</h2>
+          <p>
+            This site is intended for a general audience and is not directed to
+            children under 13.
+          </p>
+
+          <h2>Changes to this policy</h2>
+          <p>
+            We may update this policy from time to time. The latest version will
+            be posted on this page.
+          </p>
+
+          <h2>Contact</h2>
+          <p>
+            For privacy questions, contact:
+            <span style="color: rgba(255, 255, 255, 0.92)"
+              >support@mortgagestresstesttool.com</span
+            >
+          </p>
+
+          <p class="muted" style="margin-top: 14px">
+            Last updated: <span id="lastUpdated"></span>
+          </p>
+        </section>
+      </article>
+
+      <footer class="footer">
+        <div class="footer-inner">
+          <div>© <span id="year"></span> MortgageRiskCalculator.com</div>
+          <div class="footer-links">
+            <a href="./learn.html">Learn</a>
+            <a href="./emergency-fund.html">Emergency Fund</a>
+            <a href="./terms.html">Terms</a>
+            <a href="./privacy.html">Privacy</a>
+            <a href="./contact.html">Contact</a>
+          </div>
+        </div>
+      </footer>
+    </main>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+      // keep it simple: use today's date or set it manually
+      const d = new Date();
+      const fmt = d.toLocaleDateString(undefined, {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      });
+      document.getElementById("lastUpdated").textContent = fmt;
+    </script>
+    <script src="./site.js"></script>
+  </body>
+</html>

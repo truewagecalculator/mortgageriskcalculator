@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Terms of Service — Mortgage Risk Calculator</title>
+    <meta
+      name="description"
+      content="Terms of Service for Mortgage Risk Calculator. Understand disclaimers, limitations, and usage rules."
+    />
+    <link
+      rel="canonical"
+      href="https://mortgageriskcalculator.com/terms.html"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <a class="brand" href="./index.html">
+          <span class="brand-name">MortgageRiskCalculator.com</span>
+        </a>
+
+        <!-- Desktop nav -->
+        <nav class="nav nav-desktop" aria-label="Primary">
+          <a class="nav-link active" href="./index.html">Tool</a>
+          <a class="nav-link" href="./learn.html">Learn</a>
+          <a class="nav-link" href="./about.html">About</a>
+          <a class="nav-link" href="./contact.html">Contact</a>
+          <a class="nav-link" href="./privacy.html">Privacy</a>
+        </nav>
+
+        <!-- Mobile menu button -->
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-label="Open menu"
+          aria-controls="mobileMenu"
+          aria-expanded="false"
+        >
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      </div>
+
+      <!-- Mobile dropdown menu -->
+      <div class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
+        <a class="nav-link active" href="./index.html">Tool</a>
+        <a class="nav-link" href="./learn.html">Learn</a>
+        <a class="nav-link" href="./about.html">About</a>
+        <a class="nav-link" href="./contact.html">Contact</a>
+        <a class="nav-link" href="./privacy.html">Privacy</a>
+      </div>
+    </header>
+
+    <main class="container">
+      <article class="doc">
+        <div class="doc-head">
+          <h1 class="h1">Terms of Service</h1>
+          <p class="lead">
+            By using this site, you agree to the terms below. We wrote these to
+            be simple and reasonable.
+          </p>
+        </div>
+
+        <section class="doc-card">
+          <h2>1) Educational use only</h2>
+          <p>
+            The Mortgage Stress Test Tool and related content are provided for
+            informational and educational purposes. They are not financial,
+            legal, or tax advice.
+          </p>
+
+          <h2>2) No guarantees</h2>
+          <p>
+            We try to keep calculations accurate and up to date, but results may
+            be incomplete, simplified, or incorrect for certain situations. You
+            are responsible for validating important decisions with qualified
+            professionals.
+          </p>
+
+          <h2>3) Assumptions and limitations</h2>
+          <ul>
+            <li>Calculations are based on the numbers you enter.</li>
+            <li>
+              Results may not reflect your lender’s exact payment rules or
+              escrow adjustments.
+            </li>
+            <li>Real-world events can differ from modeled scenarios.</li>
+          </ul>
+
+          <h2>4) Acceptable use</h2>
+          <p>
+            You agree not to misuse the site, attempt to break it, or use
+            automated systems to overload it.
+          </p>
+
+          <h2>5) Intellectual property</h2>
+          <p>
+            Site design, text, and tool logic are protected by applicable
+            intellectual property laws. You may not copy or redistribute
+            substantial parts of the site without permission.
+          </p>
+
+          <h2>6) Third-party services</h2>
+          <p>
+            We may use third-party services such as analytics and advertising
+            networks (e.g., Google AdSense). These providers may collect
+            information via cookies in accordance with their own policies.
+          </p>
+
+          <h2>7) Limitation of liability</h2>
+          <p>
+            To the maximum extent permitted by law, we are not liable for losses
+            or damages arising from your use of the site or reliance on the
+            results.
+          </p>
+
+          <h2>8) Changes</h2>
+          <p>
+            We may update these terms from time to time. Continued use of the
+            site indicates acceptance of updated terms.
+          </p>
+
+          <h2>9) Contact</h2>
+          <p>
+            Questions about these terms:
+            <span style="color: rgba(255, 255, 255, 0.92)"
+              >support@mortgagestresstesttool.com</span
+            >
+          </p>
+
+          <p class="muted" style="margin-top: 14px">
+            Last updated: <span id="lastUpdated"></span>
+          </p>
+        </section>
+      </article>
+
+      <footer class="footer">
+        <div class="footer-inner">
+          <div>© <span id="year"></span> MortgageRiskCalculator.com</div>
+          <div class="footer-links">
+            <a href="./learn.html">Learn</a>
+            <a href="./emergency-fund.html">Emergency Fund</a>
+            <a href="./terms.html">Terms</a>
+            <a href="./privacy.html">Privacy</a>
+            <a href="./contact.html">Contact</a>
+          </div>
+        </div>
+      </footer>
+    </main>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+      const d = new Date();
+      document.getElementById("lastUpdated").textContent = d.toLocaleDateString(
+        undefined,
+        { year: "numeric", month: "long", day: "numeric" }
+      );
+    </script>
+    <script src="./site.js"></script>
+  </body>
+</html>

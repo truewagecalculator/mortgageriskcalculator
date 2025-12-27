@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mortgage Payment Shock Calculator (Escrow + Expense Spikes)</title>
+    <meta
+      name="description"
+      content="Simulate mortgage payment shock from taxes, insurance, escrow catch-up, and monthly expense spikes. See runway and breakpoints."
+    />
+    <link
+      rel="canonical"
+      href="https://mortgageriskcalculator.com/payment-shock.html"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <a class="brand" href="./index.html">
+          <span class="brand-name">MortgageRiskCalculator.com</span>
+        </a>
+
+        <!-- Desktop nav -->
+        <nav class="nav nav-desktop" aria-label="Primary">
+          <a class="nav-link active" href="./index.html">Tool</a>
+          <a class="nav-link" href="./learn.html">Learn</a>
+          <a class="nav-link" href="./about.html">About</a>
+          <a class="nav-link" href="./contact.html">Contact</a>
+          <a class="nav-link" href="./privacy.html">Privacy</a>
+        </nav>
+
+        <!-- Mobile menu button -->
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-label="Open menu"
+          aria-controls="mobileMenu"
+          aria-expanded="false"
+        >
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      </div>
+
+      <!-- Mobile dropdown menu -->
+      <div class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
+        <a class="nav-link active" href="./index.html">Tool</a>
+        <a class="nav-link" href="./learn.html">Learn</a>
+        <a class="nav-link" href="./about.html">About</a>
+        <a class="nav-link" href="./contact.html">Contact</a>
+        <a class="nav-link" href="./privacy.html">Privacy</a>
+      </div>
+    </header>
+
+    <main class="container">
+      <article class="doc">
+        <div class="doc-head">
+          <h1 class="h1">Mortgage Payment Shock</h1>
+          <p class="lead">
+            “Payment shock” is when your monthly housing cost jumps—usually
+            through taxes, insurance, escrow catch-up, or lifestyle inflation.
+            Stress testing shows whether that shock drains your savings.
+          </p>
+        </div>
+
+        <section class="doc-card">
+          <h2>What causes payment shock?</h2>
+          <ul>
+            <li>
+              <strong>Property tax increases:</strong> reassessments and millage
+              changes can be significant.
+            </li>
+            <li>
+              <strong>Insurance increases:</strong> premiums can spike and
+              deductibles may rise.
+            </li>
+            <li>
+              <strong>Escrow catch-up:</strong> if escrow was short, the payment
+              can jump temporarily.
+            </li>
+            <li><strong>HOA changes:</strong> fees increase over time.</li>
+            <li>
+              <strong>Utilities/maintenance creep:</strong> real housing cost is
+              more than the mortgage payment.
+            </li>
+          </ul>
+
+          <h2>Why it’s dangerous (even if you’re “approved”)</h2>
+          <p>
+            Payment shock turns a small cushion into a monthly burn. If your
+            margin flips negative, you can survive for a while— but only as long
+            as your savings holds. This is exactly why runway matters.
+          </p>
+
+          <h2>How to model payment shock with the tool</h2>
+          <ol>
+            <li>Enter baseline mortgage + escrow items.</li>
+            <li>
+              If taxes or insurance increased, update those fields directly.
+            </li>
+            <li>
+              Use <strong>Expense spike / mo</strong> to simulate escrow
+              catch-up, utilities increases, or other monthly pressure.
+            </li>
+            <li>
+              Optionally add an emergency cost (deductible/repair) to see
+              compounded impact.
+            </li>
+          </ol>
+
+          <h2>What good looks like</h2>
+          <ul>
+            <li>
+              Your margin stays positive, or only slightly negative in stress
+              scenarios.
+            </li>
+            <li>
+              You still have meaningful runway (many target 6+ months, depending
+              on income stability).
+            </li>
+            <li>
+              Breakpoints are far enough away that small surprises don’t trigger
+              failure.
+            </li>
+          </ul>
+
+          <h2>Practical fixes if payment shock breaks you</h2>
+          <ul>
+            <li>
+              <strong>Cut burn first:</strong> reduce expenses that don’t add
+              safety (lifestyle creep).
+            </li>
+            <li>
+              <strong>Increase runway:</strong> build savings until the burn is
+              survivable for months.
+            </li>
+            <li>
+              <strong>Adjust housing pressure:</strong> refinance later, reduce
+              principal long-term, or re-evaluate housing costs if shopping.
+            </li>
+          </ul>
+
+          <hr
+            style="
+              border: none;
+              border-top: 1px solid rgba(255, 255, 255, 0.1);
+              margin: 16px 0;
+            "
+          />
+
+          <p style="margin: 0">
+            Next: simulate <a href="./rates.html">rate hikes</a> or size your
+            <a href="./emergency-fund.html">emergency fund</a>. Ready?
+            <a href="./index.html">Run the tool</a>.
+          </p>
+        </section>
+
+        <footer class="doc-footer">
+          <a href="./learn.html">Back to Learn Hub</a>
+        </footer>
+      </article>
+
+      <footer class="footer">
+        <div class="footer-inner">
+          <div>© <span id="year"></span> MortgageRiskCalculator.com</div>
+          <div class="footer-links">
+            <a href="./learn.html">Learn</a>
+            <a href="./emergency-fund.html">Emergency Fund</a>
+            <a href="./terms.html">Terms</a>
+            <a href="./privacy.html">Privacy</a>
+            <a href="./contact.html">Contact</a>
+          </div>
+        </div>
+      </footer>
+    </main>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+    <script src="./site.js"></script>
+  </body>
+</html>

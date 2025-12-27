@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Contact — Mortgage Risk Calculator</title>
+    <meta
+      name="description"
+      content="Contact Mortgage Risk Calculator for feedback, corrections, or questions."
+    />
+    <link
+      rel="canonical"
+      href="https://mortgageriskcalculator.com/contact.html"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <a class="brand" href="./index.html">
+          <span class="brand-name">MortgageRiskCalculator.com</span>
+        </a>
+
+        <!-- Desktop nav -->
+        <nav class="nav nav-desktop" aria-label="Primary">
+          <a class="nav-link active" href="./index.html">Tool</a>
+          <a class="nav-link" href="./learn.html">Learn</a>
+          <a class="nav-link" href="./about.html">About</a>
+          <a class="nav-link" href="./contact.html">Contact</a>
+          <a class="nav-link" href="./privacy.html">Privacy</a>
+        </nav>
+
+        <!-- Mobile menu button -->
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-label="Open menu"
+          aria-controls="mobileMenu"
+          aria-expanded="false"
+        >
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      </div>
+
+      <!-- Mobile dropdown menu -->
+      <div class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
+        <a class="nav-link active" href="./index.html">Tool</a>
+        <a class="nav-link" href="./learn.html">Learn</a>
+        <a class="nav-link" href="./about.html">About</a>
+        <a class="nav-link" href="./contact.html">Contact</a>
+        <a class="nav-link" href="./privacy.html">Privacy</a>
+      </div>
+    </header>
+
+    <main class="container">
+      <article class="doc">
+        <div class="doc-head">
+          <h1 class="h1">Contact</h1>
+          <p class="lead">
+            Feedback is welcome—especially if you spot a bug, confusing wording,
+            or want a feature added.
+          </p>
+        </div>
+
+        <section class="doc-card">
+          <h2>How to reach us</h2>
+          <p>
+            For now, the simplest setup is to use a dedicated email address for
+            the site:
+          </p>
+          <ul>
+            <li>
+              <strong>Email:</strong>
+              <span style="color: rgba(255, 255, 255, 0.92)"
+                >support@mortgageriskcalculator.com</span
+              >
+            </li>
+            <li>
+              <strong>Subject ideas:</strong> “Bug”, “Suggestion”, “Content
+              correction”, “Ad/partnership”
+            </li>
+          </ul>
+
+          <h2>What to include</h2>
+          <ul>
+            <li>What page you were on (Tool / Guide / Rates / etc.)</li>
+            <li>What you expected to happen</li>
+            <li>What actually happened</li>
+            <li>Optional: a screenshot (remove personal details)</li>
+          </ul>
+
+          <h2>Important note</h2>
+          <p>
+            We can’t provide personalized financial advice. If you’re making
+            major decisions, consider speaking with a qualified professional who
+            can review your full situation.
+          </p>
+
+          <hr
+            style="
+              border: none;
+              border-top: 1px solid rgba(255, 255, 255, 0.1);
+              margin: 16px 0;
+            "
+          />
+
+          <p style="margin: 0">
+            For data handling, see <a href="./privacy.html">Privacy Policy</a>.
+            For site rules, see <a href="./terms.html">Terms</a>.
+          </p>
+        </section>
+      </article>
+
+      <footer class="footer">
+        <div class="footer-inner">
+          <div>© <span id="year"></span> MortgageRiskCalculator.com</div>
+          <div class="footer-links">
+            <a href="./learn.html">Learn</a>
+            <a href="./emergency-fund.html">Emergency Fund</a>
+            <a href="./terms.html">Terms</a>
+            <a href="./privacy.html">Privacy</a>
+            <a href="./contact.html">Contact</a>
+          </div>
+        </div>
+      </footer>
+    </main>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+    <script src="./site.js"></script>
+  </body>
+</html>

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mortgage Risk Calculator</title>
+    <meta
+      name="description"
+      content="Stress test your mortgage against job loss, rate hikes, and emergencies. Get a stress score, runway, and breakpoints."
+    />
+    <link rel="canonical" href="https://mortgageriskcalculator.com/" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <a class="brand" href="./index.html">
+          <span class="brand-name">MortgageRiskCalculator.com</span>
+        </a>
+
+        <!-- Desktop nav -->
+        <nav class="nav nav-desktop" aria-label="Primary">
+          <a class="nav-link active" href="./index.html">Tool</a>
+          <a class="nav-link" href="./learn.html">Learn</a>
+          <a class="nav-link" href="./about.html">About</a>
+          <a class="nav-link" href="./contact.html">Contact</a>
+          <a class="nav-link" href="./privacy.html">Privacy</a>
+        </nav>
+
+        <!-- Mobile menu button -->
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-label="Open menu"
+          aria-controls="mobileMenu"
+          aria-expanded="false"
+        >
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      </div>
+
+      <!-- Mobile dropdown menu -->
+      <div class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
+        <a class="nav-link active" href="./index.html">Tool</a>
+        <a class="nav-link" href="./learn.html">Learn</a>
+        <a class="nav-link" href="./about.html">About</a>
+        <a class="nav-link" href="./contact.html">Contact</a>
+        <a class="nav-link" href="./privacy.html">Privacy</a>
+      </div>
+    </header>
+
+    <main class="container">
+      <div class="page-head">
+        <div>
+          <h1 class="h1">Stress Test Your Mortgage</h1>
+          <p class="lead">
+            Stress test your mortgage against income shocks, rate hikes, and emergencies. Get a runway,
+            breakpoints, and a simple risk score.
+          </p>
+        </div>
+        <div class="head-actions">
+          <button id="resetBtnTop" class="btn" type="button">Reset</button>
+          <button id="copyBtnTop" class="btn btn-primary" type="button">Copy Results</button>
+        </div>
+      </div>
+
+      <!-- Tool (static HTML; app.js only wires behavior) -->
+      <section class="app-grid" id="toolApp">
+        <!-- Card 1: Baseline Inputs -->
+        <section class="card" aria-label="Baseline inputs">
+          <div class="card-head">
+            <div>
+              <div class="card-title">Baseline</div>
+              <div class="card-sub">Your current mortgage + household budget.</div>
+            </div>
+            <span class="pill" title="Enter what you pay today">Today</span>
+          </div>
+
+          <div class="card-body">
+            <div class="row two">
+              <div>
+                <label for="loanAmount">Loan amount</label>
+                <input id="loanAmount" type="number" inputmode="numeric" placeholder="e.g. 350000" />
+              </div>
+              <div>
+                <label for="annualRatePct">Interest rate (%)</label>
+                <input id="annualRatePct" type="number" step="0.01" inputmode="decimal" placeholder="e.g. 6.75" />
+              </div>
+            </div>
+
+            <div class="row three">
+              <div>
+                <label for="termYears">Term (years)</label>
+                <input id="termYears" type="number" inputmode="numeric" placeholder="30" />
+              </div>
+              <div>
+                <label for="taxesMonthly">Taxes (monthly)</label>
+                <input id="taxesMonthly" type="number" inputmode="numeric" placeholder="e.g. 450" />
+              </div>
+              <div>
+                <label for="insuranceMonthly">Insurance (monthly)</label>
+                <input id="insuranceMonthly" type="number" inputmode="numeric" placeholder="e.g. 180" />
+              </div>
+            </div>
+
+            <div class="row two">
+              <div>
+                <label for="hoaMonthly">HOA (monthly)</label>
+                <input id="hoaMonthly" type="number" inputmode="numeric" placeholder="0 if none" />
+              </div>
+              <div>
+                <label for="savings">Liquid savings</label>
+                <input id="savings" type="number" inputmode="numeric" placeholder="e.g. 15000" />
+              </div>
+            </div>
+
+            <div class="row two">
+              <div>
+                <label for="netIncomeMonthly">Net income (monthly)</label>
+                <input id="netIncomeMonthly" type="number" inputmode="numeric" placeholder="e.g. 6500" />
+              </div>
+              <div>
+                <label for="otherExpensesMonthly">Other expenses (monthly)</label>
+                <input id="otherExpensesMonthly" type="number" inputmode="numeric" placeholder="e.g. 2600" />
+              </div>
+            </div>
+
+            <div class="row two">
+              <div>
+                <label for="mode">Scoring mode</label>
+                <select id="mode">
+                  <option value="balanced">Balanced</option>
+                  <option value="conservative">Conservative</option>
+                </select>
+              </div>
+              <div class="box">
+                <div class="kv">
+                  <div>Monthly housing</div><div class="v" id="housingMonthly">—</div>
+                  <div>Monthly margin</div><div class="v" id="baseMargin">—</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Card 2: Stress Scenario -->
+        <section class="card" aria-label="Stress scenario inputs">
+          <div class="card-head">
+            <div>
+              <div class="card-title">Stress Scenario</div>
+              <div class="card-sub">Model the shocks you’re worried about.</div>
+            </div>
+            <span class="pill" title="Adjust the scenario">Scenario</span>
+          </div>
+
+          <div class="card-body">
+            <div class="row two">
+              <div>
+                <label for="incomeDropPct">Income drop (%)</label>
+                <input id="incomeDropPct" type="number" min="0" max="100" inputmode="numeric" placeholder="0" />
+              </div>
+              <div>
+                <label for="rateHikePct">Rate hike (+%)</label>
+                <input id="rateHikePct" type="number" min="0" max="20" step="0.05" inputmode="decimal" placeholder="0" />
+              </div>
+            </div>
+
+            <div class="row two">
+              <div>
+                <label for="monthsUnemployed">Months unemployed (scenario length)</label>
+                <input id="monthsUnemployed" type="number" min="1" inputmode="numeric" placeholder="1" />
+              </div>
+              <div>
+                <label for="expenseSpikeMonthly">Expense spike (monthly)</label>
+                <input id="expenseSpikeMonthly" type="number" inputmode="numeric" placeholder="e.g. 300" />
+              </div>
+            </div>
+
+            <div class="row two">
+              <div>
+                <label for="emergencyCost">Emergency cost (one-time)</label>
+                <input id="emergencyCost" type="number" inputmode="numeric" placeholder="e.g. 7500" />
+              </div>
+              <div class="box">
+                <div class="kv">
+                  <div>Stress margin</div><div class="v" id="stressMargin">—</div>
+                  <div>Runway</div><div class="v" id="runway">—</div>
+                  <div>Savings after emergency</div><div class="v" id="savingsAfterEmergency">—</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="box">
+              <div class="kv">
+                <div>Housing / income (stress)</div><div class="v" id="housingPressure">—</div>
+                <div>Rate breakpoint</div><div class="v" id="rateBreakpoint">—</div>
+                <div>Income breakpoint</div><div class="v" id="incomeBreakpoint">—</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Card 3: Score + Actions -->
+        <section class="card" aria-label="Risk score and actions">
+          <div class="card-head">
+            <div>
+              <div class="card-title">Risk Score</div>
+              <div class="card-sub">A simple “can I survive a shock?” answer.</div>
+            </div>
+            <span class="pill" id="riskPill">—</span>
+          </div>
+
+          <div class="card-body">
+            <div class="big-score">
+              <div>
+                <div class="num" id="score">—</div>
+                <div class="txt" id="scoreExplain">Enter your numbers to begin.</div>
+              </div>
+            </div>
+
+            <div class="box">
+              <div class="kv">
+                <div>What this means</div><div class="v" id="meaningShort">—</div>
+              </div>
+            </div>
+
+            <ul class="actions" id="actionList">
+              <li><strong>Tip:</strong> If your runway is short, prioritize cash buffer before investing extra in the home.</li>
+              <li><strong>Tip:</strong> Use rate breakpoint to judge refinance urgency if rates rise.</li>
+              <li><strong>Tip:</strong> If housing pressure is high, reduce fixed costs before taking on new debt.</li>
+            </ul>
+          </div>
+        </section>
+      </section>
+
+      <footer class="footer">
+        <div class="footer-inner">
+          <div>© <span id="year"></span> MortgageRiskCalculator.com</div>
+          <div class="footer-links">
+            <a href="./learn.html">Learn</a>
+            <a href="./emergency-fund.html">Emergency Fund</a>
+            <a href="./terms.html">Terms</a>
+            <a href="./privacy.html">Privacy</a>
+            <a href="./contact.html">Contact</a>
+          </div>
+        </div>
+      </footer>
+    </main>
+
+    <script src="./app.js"></script>
+    <script src="./site.js"></script>
+  </body>
+</html>

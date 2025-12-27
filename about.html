@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About — Mortgage Stress Test Tool</title>
+  <meta name="description" content="About Mortgage Stress Test Tool — a simple, practical way to stress test your mortgage against job loss, rate hikes, and emergencies." />
+  <link rel="canonical" href="https://mortgageriskcalculator.com/about.html" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="site-header">
+      <div class="container">
+        <a class="brand" href="./index.html">
+          <span class="brand-name">MortgageRiskCalculator.com</span>
+        </a>
+
+        <!-- Desktop nav -->
+        <nav class="nav nav-desktop" aria-label="Primary">
+          <a class="nav-link active" href="./index.html">Tool</a>
+          <a class="nav-link" href="./learn.html">Learn</a>
+          <a class="nav-link" href="./about.html">About</a>
+          <a class="nav-link" href="./contact.html">Contact</a>
+          <a class="nav-link" href="./privacy.html">Privacy</a>
+        </nav>
+
+        <!-- Mobile menu button -->
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-label="Open menu"
+          aria-controls="mobileMenu"
+          aria-expanded="false"
+        >
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      </div>
+
+      <!-- Mobile dropdown menu -->
+      <div class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
+        <a class="nav-link active" href="./index.html">Tool</a>
+        <a class="nav-link" href="./learn.html">Learn</a>
+        <a class="nav-link" href="./about.html">About</a>
+        <a class="nav-link" href="./contact.html">Contact</a>
+        <a class="nav-link" href="./privacy.html">Privacy</a>
+      </div>
+    </header>
+
+  <main class="container">
+    <article class="doc">
+      <div class="doc-head">
+        <h1 class="h1">About</h1>
+        <p class="lead">
+          Mortgage Risk Calculator helps you answer a real-life question: <strong>“If something goes wrong, how long do I last?”</strong>
+        </p>
+      </div>
+
+      <section class="doc-card">
+        <h2>Why this exists</h2>
+        <p>
+          Mortgage approval isn’t the same thing as mortgage safety. A payment can look fine on paper and still be fragile
+          if your income drops, rates rise (ARM/reset risk), escrow increases, or a large emergency repair hits.
+        </p>
+
+        <h2>What the tool does</h2>
+        <ul>
+          <li><strong>Stress tests</strong> your monthly budget under realistic scenarios</li>
+          <li>Calculates a simple <strong>stress score</strong> (resilience vs risk)</li>
+          <li>Shows <strong>runway</strong> (how long savings lasts when you’re burning cash)</li>
+          <li>Finds <strong>breakpoints</strong> where your budget flips negative</li>
+        </ul>
+
+        <h2>What it does not do</h2>
+        <ul>
+          <li>It’s not financial advice or a loan approval tool</li>
+          <li>It doesn’t replace professional guidance for complex situations</li>
+          <li>It doesn’t access your bank accounts or personal data</li>
+        </ul>
+
+        <h2>Privacy-first by design</h2>
+        <p>
+          This is a simple static web app. Your inputs are used to calculate results in your browser.
+          We don’t require accounts to use the tool.
+        </p>
+
+        <hr style="border:none;border-top:1px solid rgba(255,255,255,.10);margin:16px 0;" />
+
+        <p style="margin:0;">
+          Questions? Use the <a href="./contact.html">contact page</a>. For details on data handling, read <a href="./privacy.html">privacy</a>.
+        </p>
+      </section>
+    </article>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        <div>© <span id="year"></span> MortgageRiskCalculator.com</div>
+        <div class="footer-links">
+          <a href="./learn.html">Learn</a>
+          <a href="./emergency-fund.html">Emergency Fund</a>
+          <a href="./terms.html">Terms</a>
+          <a href="./privacy.html">Privacy</a>
+          <a href="./contact.html">Contact</a>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+  <script src="./site.js"></script>
+</body>
+</html>

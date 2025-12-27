@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Rent vs Buy Stress Test (Beyond Monthly Payment)</title>
+    <meta
+      name="description"
+      content="Rent vs buy decisions should consider runway, flexibility, and downside risk—not just monthly cost."
+    />
+    <link
+      rel="canonical"
+      href="https://mortgageriskcalculator.com/rent-vs-buy-stress-test.html"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <a class="brand" href="./index.html">
+          <span class="brand-name">MortgageRiskCalculator.com</span>
+        </a>
+
+        <!-- Desktop nav -->
+        <nav class="nav nav-desktop" aria-label="Primary">
+          <a class="nav-link active" href="./index.html">Tool</a>
+          <a class="nav-link" href="./learn.html">Learn</a>
+          <a class="nav-link" href="./about.html">About</a>
+          <a class="nav-link" href="./contact.html">Contact</a>
+          <a class="nav-link" href="./privacy.html">Privacy</a>
+        </nav>
+
+        <!-- Mobile menu button -->
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-label="Open menu"
+          aria-controls="mobileMenu"
+          aria-expanded="false"
+        >
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      </div>
+
+      <!-- Mobile dropdown menu -->
+      <div class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
+        <a class="nav-link active" href="./index.html">Tool</a>
+        <a class="nav-link" href="./learn.html">Learn</a>
+        <a class="nav-link" href="./about.html">About</a>
+        <a class="nav-link" href="./contact.html">Contact</a>
+        <a class="nav-link" href="./privacy.html">Privacy</a>
+      </div>
+    </header>
+
+    <main class="container">
+      <article class="doc">
+        <div class="doc-head">
+          <h1 class="h1">Rent vs Buy: A Stress Test Perspective</h1>
+          <p class="lead">
+            Buying builds equity. Renting preserves flexibility. Stress testing
+            shows which one survives pressure better.
+          </p>
+          <a class="btn btn-primary" href="./index.html"
+            >Test Buying Scenarios</a
+          >
+        </div>
+
+        <section class="doc-card">
+          <h2>The missing variable: downside risk</h2>
+          <p>
+            Most rent vs buy calculators assume everything goes according to
+            plan. Stress testing asks:
+            <strong>what happens when it doesn’t?</strong>
+          </p>
+
+          <h2>Why renting can be safer (sometimes)</h2>
+          <ul>
+            <li>Lower fixed commitments</li>
+            <li>Faster exit in income disruption</li>
+            <li>No repair or escrow shock</li>
+          </ul>
+
+          <h2>Why buying can still win</h2>
+          <ul>
+            <li>Strong margin and savings buffer</li>
+            <li>Stable income</li>
+            <li>Long time horizon</li>
+          </ul>
+
+          <h2>How to compare properly</h2>
+          <ol>
+            <li>Stress test the mortgage side.</li>
+            <li>Look at runway under job loss or expense spikes.</li>
+            <li>Compare flexibility, not just cost.</li>
+          </ol>
+
+          <hr />
+          <p>
+            Use the <a href="./index.html">tool</a> to see whether buying
+            survives stress better than renting for your situation.
+          </p>
+        </section>
+
+        <footer class="doc-footer">
+          <a href="./learn.html">Back to Learn Hub</a>
+        </footer>
+      </article>
+
+      <footer class="footer">
+        <div class="footer-inner">
+          <div>© <span id="year"></span> MortgageRiskCalculator.com</div>
+          <div class="footer-links">
+            <a href="./learn.html">Learn</a>
+            <a href="./emergency-fund.html">Emergency Fund</a>
+            <a href="./terms.html">Terms</a>
+            <a href="./privacy.html">Privacy</a>
+            <a href="./contact.html">Contact</a>
+          </div>
+        </div>
+      </footer>
+    </main>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+    <script src="./site.js"></script>
+  </body>
+</html>
