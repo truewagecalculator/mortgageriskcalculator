@@ -15,6 +15,7 @@
   --good: rgba(16,185,129,.18);
   --warn: rgba(245,158,11,.18);
   --bad:  rgba(244,63,94,.18);
+  --max:1300px;
 }
 
 /* Fixed decorative background layer */
@@ -32,6 +33,7 @@ body::before{
 *{ box-sizing:border-box; }
 html,body{ margin:0;padding:0;height:100%;}
 body{
+  margin:0;
   font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
   background: var(--bg);
   color: var(--text);
@@ -57,28 +59,6 @@ a{color:inherit}
   justify-content:space-between;
   gap:14px;
 }
-
-.brand{
-  display:flex; align-items:center; gap:10px;
-  text-decoration:none; color: var(--text);
-}
-
-.brand-name{
-  font-weight:900;
-  letter-spacing:-0.2px;
-}
-
-.logo{
-  display:flex;
-  align-items:center;
-  gap:8px;
-  text-decoration:none;
-  color:inherit;
-  min-width:0;
-}
-.logo-img{ height:28px; width:auto; display:block; }
-.logo-text{ white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-.tag{ color: var(--muted); font-size: 12px; }
 
 /* Desktop nav */
 .nav{
@@ -172,18 +152,38 @@ a{color:inherit}
   }
 }
 
+.brand{
+  display:flex; align-items:center; gap:10px;
+  text-decoration:none; color: var(--text);
+}
+
+.brand-name{
+  font-weight:900;
+  letter-spacing:-0.2px;
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  text-decoration:none;
+  color:inherit;
+  min-width:0;
+}
+.logo-img{ height:28px; width:auto; display:block; }
+.logo-text{ white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.tag{ color: var(--muted); font-size: 12px; }
+
 .page-head{
   display:flex; align-items:flex-end; justify-content:space-between;
   gap: 16px;
   padding: 22px 0 16px;
 }
-
-.hero{padding: 22px 0 10px}
 .h1{ margin:0; font-size: 34px; letter-spacing: -0.03em; }
 .lead{ margin: 10px 0 0; color: var(--muted); max-width: 760px; line-height: 1.55; }
-.subhead{color:var(--muted); max-width: 900px; margin:0}
+.head-actions{ display:flex; gap: 10px; flex-wrap:wrap; }
 
-.head-actions{
+.action-row{
   display:flex;
   gap:10px;
   align-items:center;
@@ -192,7 +192,7 @@ a{color:inherit}
 }
 
 /* Make buttons consistent */
-.head-actions .btn{
+.action-row .btn{
   height:44px;
   padding:0 14px;
   border-radius:12px;
@@ -202,16 +202,15 @@ a{color:inherit}
 
 /* Mobile: stack + full width */
 @media (max-width: 560px){
-  .head-actions{
+  .action-row{
     justify-content:stretch;
   }
-  .head-actions .btn{
+  .action-row .btn{
     width:100%;
     justify-content:center;
     text-align:center;
   }
 }
-
 
 .btn{
   border: 1px solid rgba(255,255,255,.14);
@@ -339,52 +338,6 @@ input[type="range"]{ width:100%; }
   color: var(--accent2);
 }
 
-@media (max-width: 980px){
-  .grid{grid-template-columns: 1fr}
-  h1{font-size: 32px}
-  .value{font-size: 40px}
-}
-
-/* Footer: mobile-friendly layout */
-@media (max-width: 860px){
-  .footer-inner{
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-  }
-
-  .footer-links{
-    width: 100%;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-
-  .footer-links a{
-    display: inline-block;
-    padding: 10px 12px;        /* bigger tap target */
-    border-radius: 12px;
-    border: 1px solid rgba(255,255,255,.08);
-    background: rgba(255,255,255,.03);
-    text-decoration: none;
-  }
-
-  .footer-links a:hover{
-    background: rgba(255,255,255,.06);
-    border-color: rgba(124,92,255,.35);
-    color: var(--text);
-  }
-}
-
-@media (max-width: 860px){
-  .footer-inner{
-    align-items: center;
-    text-align: center;
-  }
-  .footer-links{
-    justify-content: center;
-  }
-}
-
 .doc{ padding: 20px 0 30px; }
 .doc-head{
   border: 1px solid var(--border);
@@ -463,4 +416,44 @@ input[type="range"]{ width:100%; }
   background: rgba(255,255,255,.07);
   color: rgba(255,255,255,.86);
   white-space: nowrap;
+}
+
+/* Footer: mobile-friendly layout */
+@media (max-width: 860px){
+  .footer-inner{
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .footer-links{
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .footer-links a{
+    display: inline-block;
+    padding: 10px 12px;        /* bigger tap target */
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,.08);
+    background: rgba(255,255,255,.03);
+    text-decoration: none;
+  }
+
+  .footer-links a:hover{
+    background: rgba(255,255,255,.06);
+    border-color: rgba(124,92,255,.35);
+    color: var(--text);
+  }
+}
+
+@media (max-width: 860px){
+  .footer-inner{
+    align-items: center;
+    text-align: center;
+  }
+  .footer-links{
+    justify-content: center;
+  }
 }

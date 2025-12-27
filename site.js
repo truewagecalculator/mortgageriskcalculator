@@ -1,46 +1,40 @@
-// site.js — shared site behavior (header mobile nav + year)
-(() => {
-  function initYear() {
-    const y = document.getElementById("year");
-    if (y) y.textContent = String(new Date().getFullYear());
-  }
+// ===============================
+// Mobile Dropdown Menu
+// ===============================
+    (function setupMobileDropdown(){
+      const header = document.querySelector(".site-header");
+      const btn = document.querySelector(".nav-toggle");
+      const menu = document.getElementById("mobileMenu");
 
-  function initMobileNav() {
-    const header = document.querySelector(".site-header");
-    const btn = document.querySelector(".nav-toggle");
-    const menu = document.getElementById("mobileMenu");
+      if (!header || !btn || !menu) return;
 
-    if (!header || !btn || !menu) return;
+      const open = () => {
+        header.classList.add("nav-open");
+        btn.setAttribute("aria-expanded", "true");
+        menu.scrollTop = 0;
+      };
 
-    function setOpen(isOpen) {
-      btn.setAttribute("aria-expanded", String(isOpen));
-      header.classList.toggle("nav-open", isOpen);
-    }
+      const close = () => {
+        header.classList.remove("nav-open");
+        btn.setAttribute("aria-expanded", "false");
+      };
 
-    // Toggle button
-    btn.addEventListener("click", () => {
-      const isOpen = btn.getAttribute("aria-expanded") === "true";
-      setOpen(!isOpen);
-    });
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        header.classList.contains("nav-open") ? close() : open();
+      });
 
-    // Close when clicking a link in the mobile menu
-    menu.querySelectorAll("a").forEach((a) => {
-      a.addEventListener("click", () => setOpen(false));
-    });
+      // Close after clicking a link
+      menu.querySelectorAll("a").forEach(a => a.addEventListener("click", close));
 
-    // Close when clicking outside
-    document.addEventListener("click", (e) => {
-      if (!header.contains(e.target)) setOpen(false);
-    });
+      // Close if you click outside
+      document.addEventListener("click", (e) => {
+        if (!header.contains(e.target)) close();
+      });
 
-    // Close on Escape
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") setOpen(false);
-    });
-  }
-
-  document.addEventListener("DOMContentLoaded", () => {
-    initYear();
-    initMobileNav();
-  });
-})();
+      // Close on ESC
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") close();
+      });
+  })();

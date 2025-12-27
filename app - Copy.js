@@ -9,25 +9,21 @@ const PRESETS = [
 ];
 
 const DEFAULTS = {
-  loanAmount: "",
-    annualRatePct: "",
-    termYears: "30",
-
-    taxesMonthly: "",
-    insuranceMonthly: "",
-    hoaMonthly: "",
-
-    netIncomeMonthly: "",
-    otherExpensesMonthly: "",
-    savings: "",
-
-    incomeDropPct: "0",
-    rateHikePct: "0",
-    emergencyCost: "",
-    monthsUnemployed: "1",
-    expenseSpikeMonthly: "",
-
-    mode: "balanced",
+  loanAmount: 350000,
+  annualRatePct: 6.75,
+  termYears: 30,
+  taxesMonthly: 450,
+  insuranceMonthly: 180,
+  hoaMonthly: 0,
+  netIncomeMonthly: 6500,
+  otherExpensesMonthly: 2600,
+  savings: 15000,
+  incomeDropPct: 50,
+  rateHikePct: 2.0,
+  emergencyCost: 7500,
+  monthsUnemployed: 4,
+  expenseSpikeMonthly: 0,
+  mode: "balanced",
 };
 
 const $ = (id) => document.getElementById(id);
@@ -168,18 +164,18 @@ function toolMarkup(){
         <div class="row two">
           <div>
             <label>Loan amount</label>
-            <input id="loanAmount" type="number" inputmode="numeric" placeholder="e.g. 350000" />
+            <input id="loanAmount" type="number" inputmode="numeric" />
           </div>
           <div>
             <label>Rate (%)</label>
-            <input id="annualRatePct" type="number" step="0.01" inputmode="decimal" placeholder="e.g. 6.75" />
+            <input id="annualRatePct" type="number" step="0.01" inputmode="decimal" />
           </div>
         </div>
 
         <div class="row two">
           <div>
             <label>Term (years)</label>
-            <input id="termYears" type="number" inputmode="numeric" placeholder="30" />
+            <input id="termYears" type="number" inputmode="numeric" />
           </div>
           <div>
             <label>Score mode</label>
@@ -191,34 +187,19 @@ function toolMarkup(){
         </div>
 
         <div class="row three">
-          <div>
-            <label>Taxes / mo</label>
-            <input id="taxesMonthly" type="number" placeholder="e.g. 450" />
-          </div>
-          <div>
-          <label>Insurance / mo</label>
-            <input id="insuranceMonthly" type="number" placeholder="e.g. 180"  />
-          </div>
-          <div>
-            <label>HOA / mo</label>
-            <input id="hoaMonthly" type="number" placeholder="0 if none" />
-          </div>
+          <div><label>Taxes / mo</label><input id="taxesMonthly" type="number" /></div>
+          <div><label>Insurance / mo</label><input id="insuranceMonthly" type="number" /></div>
+          <div><label>HOA / mo</label><input id="hoaMonthly" type="number" /></div>
         </div>
 
         <div class="row two">
-          <div>
-            <label>Net income / mo</label>
-            <input id="netIncomeMonthly" type="number" placeholder="e.g. 6500" />
-          </div>
-          <div>
-            <label>Other expenses / mo</label>
-            <input id="otherExpensesMonthly" type="number" placeholder="e.g. 2600" />
-          </div>
+          <div><label>Net income / mo</label><input id="netIncomeMonthly" type="number" /></div>
+          <div><label>Other expenses / mo</label><input id="otherExpensesMonthly" type="number" /></div>
         </div>
 
         <div>
           <label>Liquid savings</label>
-          <input id="savings" type="number" placeholder="e.g. 15000" />
+          <input id="savings" type="number" />
         </div>
 
         <div class="box">
@@ -262,7 +243,7 @@ function toolMarkup(){
         <div class="row two">
           <div>
             <label>Emergency event (one-time)</label>
-            <input id="emergencyCost" type="number" placeholder="e.g. 7500" />
+            <input id="emergencyCost" type="number" />
           </div>
           <div>
             <label>Months unemployed</label>
@@ -272,7 +253,7 @@ function toolMarkup(){
 
         <div>
           <label>Expense spike / mo</label>
-          <input id="expenseSpikeMonthly" type="number" placeholder="e.g. 300" />
+          <input id="expenseSpikeMonthly" type="number" />
         </div>
 
         <div class="box">
@@ -328,62 +309,40 @@ function toolMarkup(){
 }
 
 function setDefaults(){
-  Object.entries(DEFAULTS).forEach(([id, val]) => {
-    const el = document.getElementById(id);
-    if (!el) return;
-
-    el.value = val;
-    el.dispatchEvent(new Event("input", { bubbles: true }));
-    el.dispatchEvent(new Event("change", { bubbles: true }));
-  });
-}
-
-function resetAll(){
-  setDefaults();
-
-  // reset top button label if it was changed
-  const copyTop = document.getElementById("copyBtnTop");
-  if (copyTop) copyTop.textContent = "Copy Results";
-
-  render();
-}
-
-function num(id){
-  const v = document.getElementById(id)?.value;
-  return v === "" ? 0 : Number(v);
-}
-
-function hasValue(id){
-  const el = document.getElementById(id);
-  return el && el.value !== "";
+  $("loanAmount").value = DEFAULTS.loanAmount;
+  $("annualRatePct").value = DEFAULTS.annualRatePct;
+  $("termYears").value = DEFAULTS.termYears;
+  $("taxesMonthly").value = DEFAULTS.taxesMonthly;
+  $("insuranceMonthly").value = DEFAULTS.insuranceMonthly;
+  $("hoaMonthly").value = DEFAULTS.hoaMonthly;
+  $("netIncomeMonthly").value = DEFAULTS.netIncomeMonthly;
+  $("otherExpensesMonthly").value = DEFAULTS.otherExpensesMonthly;
+  $("savings").value = DEFAULTS.savings;
+  $("incomeDropPct").value = DEFAULTS.incomeDropPct;
+  $("rateHikePct").value = DEFAULTS.rateHikePct;
+  $("emergencyCost").value = DEFAULTS.emergencyCost;
+  $("monthsUnemployed").value = DEFAULTS.monthsUnemployed;
+  $("expenseSpikeMonthly").value = DEFAULTS.expenseSpikeMonthly;
+  $("mode").value = DEFAULTS.mode;
 }
 
 function readState(){
   return {
-    loanAmount: num("loanAmount"),
-    annualRatePct: num("annualRatePct"),
-    termYears: Number(document.getElementById("termYears").value || 30),
-
-    taxesMonthly: num("taxesMonthly"),
-    insuranceMonthly: num("insuranceMonthly"),
-    hoaMonthly: num("hoaMonthly"),
-
-    netIncomeMonthly: num("netIncomeMonthly"),
-    otherExpensesMonthly: num("otherExpensesMonthly"),
-    savings: num("savings"),
-
-    incomeDropPct: Number(document.getElementById("incomeDropPct").value || 0),
-    rateHikePct: Number(document.getElementById("rateHikePct").value || 0),
-    emergencyCost: num("emergencyCost"),
-    monthsUnemployed: Math.max(
-      1,
-      Number(document.getElementById("monthsUnemployed").value || 1)
-    ),
-    expenseSpikeMonthly: num("expenseSpikeMonthly"),
-
-    mode: document.getElementById("mode").value === "conservative"
-      ? "conservative"
-      : "balanced",
+    loanAmount: Number($("loanAmount").value || 0),
+    annualRatePct: Number($("annualRatePct").value || 0),
+    termYears: Number($("termYears").value || 0),
+    taxesMonthly: Number($("taxesMonthly").value || 0),
+    insuranceMonthly: Number($("insuranceMonthly").value || 0),
+    hoaMonthly: Number($("hoaMonthly").value || 0),
+    netIncomeMonthly: Number($("netIncomeMonthly").value || 0),
+    otherExpensesMonthly: Number($("otherExpensesMonthly").value || 0),
+    savings: Number($("savings").value || 0),
+    incomeDropPct: Number($("incomeDropPct").value || 0),
+    rateHikePct: Number($("rateHikePct").value || 0),
+    emergencyCost: Number($("emergencyCost").value || 0),
+    monthsUnemployed: Math.min(12, Math.max(1, Number($("monthsUnemployed").value || 1))),
+    expenseSpikeMonthly: Number($("expenseSpikeMonthly").value || 0),
+    mode: $("mode").value === "conservative" ? "conservative" : "balanced",
   };
 }
 
@@ -414,21 +373,6 @@ function render(){
   $("incomeDropLabel").textContent = `${Math.round(s.incomeDropPct)}%`;
   $("rateHikeLabel").textContent = `+${Number(s.rateHikePct).toFixed(2)}%`;
 
-  const hasAnyInput =
-    s.loanAmount ||
-    s.netIncomeMonthly ||
-    s.otherExpensesMonthly ||
-    s.savings;
-
-    if (!hasAnyInput) {
-      $("score").textContent = "—";
-      $("scoreExplain").textContent =
-        "Enter your numbers to see how your mortgage holds up under stress.";
-      $("pill").textContent = "Waiting";
-      $("pill").className = "pill";
-      return;
-  }
-
   const baseline = computeBaseline(s);
   $("basePI").textContent = money(baseline.piMonthly);
   $("baseHousing").textContent = money(baseline.housingMonthly);
@@ -448,16 +392,7 @@ function render(){
   pill.className = "pill " + (score.score >= 75 ? "good" : score.score >= 50 ? "warn" : "bad");
 
   $("runway").textContent = stress.runwayMonths === null ? "Stable" : String(stress.runwayMonths);
-  const savingsEntered = hasValue("savings");
-  const emergencyEntered = hasValue("emergencyCost");
-
-  if (!savingsEntered) {
-    $("savingsAfterEmergency").textContent = "—";
-  } else if (!emergencyEntered) {
-    $("savingsAfterEmergency").textContent = money(baseline.savings);
-  } else {
-    $("savingsAfterEmergency").textContent = money(stress.savingsAfterEmergency);
-  }
+  $("savingsAfterEmergency").textContent = money(stress.savingsAfterEmergency);
 
   const bp = findBreakpoints(baseline, s.expenseSpikeMonthly);
   $("bpRate").textContent = bp.rateHikeFlipPct === null ? "Already negative" : `+${bp.rateHikeFlipPct.toFixed(2)}%`;
@@ -472,79 +407,16 @@ function render(){
     ol.appendChild(li);
   });
 
-  function buildReadableSummary(baseline, stress, score, breakpoints) {
-    const lines = [];
-
-    lines.push("Mortgage Risk Summary");
-    lines.push("");
-
-    lines.push(`Overall score: ${score.score} (${score.label})`);
-    lines.push(score.explain);
-    lines.push("");
-
-    lines.push("Baseline:");
-    lines.push(`• Monthly housing: ${money(baseline.housingMonthly)}`);
-    lines.push(`• Monthly margin: ${money(baseline.marginMonthly)}`);
-    lines.push("");
-
-    lines.push("Stress scenario:");
-    lines.push(`• Rate hike: +${Number(stress.annualRatePctStress - baseline.annualRatePct).toFixed(2)}%`);
-    lines.push(`• Income after stress: ${money(stress.netIncomeMonthlyStress)}`);
-    lines.push(`• Stress margin: ${money(stress.marginMonthlyStress)}`);
-    lines.push(`• Runway: ${stress.runwayMonths === null ? "Stable" : stress.runwayMonths + " months"}`);
-    lines.push("");
-
-    lines.push("Breakpoints:");
-    lines.push(
-      `• Rate increase that breaks budget: ${
-        breakpoints.rateHikeFlipPct === null ? "Already negative" : "+" + breakpoints.rateHikeFlipPct.toFixed(2) + "%"
-      }`
-    );
-    lines.push(
-      `• Income loss that breaks budget: ${
-        breakpoints.incomeLossFlipPct === null ? "Already negative" : Math.round(breakpoints.incomeLossFlipPct * 100) + "%"
-      }`
-    );
-
-    lines.push("");
-    lines.push("Generated by MortgageRiskCalculator.com");
-
-    return lines.join("\n");
+  // top buttons (optional)
+  const copyTop = $("copyBtnTop");
+  if(copyTop){
+    copyTop.onclick = async ()=>{
+      const payload = { baseline, stress, score, breakpoints: bp };
+      await navigator.clipboard.writeText(JSON.stringify(payload, null, 2));
+      copyTop.textContent = "Copied";
+      setTimeout(()=> copyTop.textContent = "Copy Results", 900);
+    };
   }
-
-  // Copy Results button handler (inside render because baseline/stress/score/bp are here)
-    const copyTop = $("copyBtnTop");
-    if (copyTop) {
-      // prevent re-wiring if render fires often:
-      if (!copyTop.dataset.wired) {
-        copyTop.dataset.wired = "1";
-        copyTop.addEventListener("click", async () => {
-          // rebuild fresh values at click time
-          const ss = readState();
-          const bb = computeBaseline(ss);
-          const st = computeStress(bb, ss);
-          const bps = computeBreakpoints(bb, ss);
-          const sc = computeScore(bb, st, bps, ss.mode);
-
-          const summary = buildReadableSummary(bb, st, sc, bps);
-
-          const ok = await copyToClipboard(summary);
-          if (ok) {
-            const original = copyTop.textContent;
-            copyTop.textContent = "Copied ✓";
-            copyTop.disabled = true;
-            showToast("Results copied. Paste into Notes, email, or share.");
-
-            setTimeout(() => {
-              copyTop.textContent = original;
-              copyTop.disabled = false;
-            }, 1800);
-          } else {
-            showToast("Copy failed. Try selecting text manually.");
-          }
-        });
-      }
-    }
 }
 
 function wire(){
@@ -559,8 +431,8 @@ function wire(){
   $("mode").addEventListener("change", render);
 
   const resetTop = $("resetBtnTop");
-  if (resetTop) {
-    resetTop.addEventListener("click", resetAll);
+  if(resetTop){
+    resetTop.addEventListener("click", ()=>{ setDefaults(); render(); });
   }
 }
 
@@ -580,32 +452,44 @@ function wire(){
   wire();
   render();
 
-  function showCopyHint(text) {
-    let hint = document.getElementById("copyHint");
+// ===============================
+// Mobile Dropdown Menu
+// ===============================
+    (function setupMobileDropdown(){
+      const header = document.querySelector(".site-header");
+      const btn = document.querySelector(".nav-toggle");
+      const menu = document.getElementById("mobileMenu");
 
-    if (!hint) {
-      hint = document.createElement("div");
-      hint.id = "copyHint";
-      hint.style.position = "fixed";
-      hint.style.bottom = "18px";
-      hint.style.left = "50%";
-      hint.style.transform = "translateX(-50%)";
-      hint.style.padding = "10px 14px";
-      hint.style.borderRadius = "12px";
-      hint.style.background = "rgba(0,0,0,.75)";
-      hint.style.border = "1px solid rgba(255,255,255,.15)";
-      hint.style.color = "white";
-      hint.style.fontSize = "13px";
-      hint.style.zIndex = "9999";
-      hint.style.boxShadow = "0 10px 30px rgba(0,0,0,.4)";
-      document.body.appendChild(hint);
-    }
+      if (!header || !btn || !menu) return;
 
-    hint.textContent = text;
-    hint.style.opacity = "1";
+      const open = () => {
+        header.classList.add("nav-open");
+        btn.setAttribute("aria-expanded", "true");
+        menu.scrollTop = 0;
+      };
 
-    setTimeout(() => {
-      hint.style.opacity = "0";
-    }, 1600);
-  }
+      const close = () => {
+        header.classList.remove("nav-open");
+        btn.setAttribute("aria-expanded", "false");
+      };
+
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        header.classList.contains("nav-open") ? close() : open();
+      });
+
+      // Close after clicking a link
+      menu.querySelectorAll("a").forEach(a => a.addEventListener("click", close));
+
+      // Close if you click outside
+      document.addEventListener("click", (e) => {
+        if (!header.contains(e.target)) close();
+      });
+
+      // Close on ESC
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") close();
+      });
+  })();
 })();
