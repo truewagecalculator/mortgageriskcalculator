@@ -1,5 +1,12 @@
 // Tool loads ONLY on index.html (where #toolApp exists)
 
+// ===== Google Analytics Safe Helper =====
+function trackEvent(eventName, params = {}) {
+  if (typeof window !== "undefined" && typeof window.gtag === "function") {
+    window.gtag("event", eventName, params);
+  }
+}
+
 const PRESETS = [
   { id:"laid_off_4mo", title:"Laid off (4 months)", patch:{ monthsUnemployed:4, incomeDropPct:60, emergencyCost:1500, rateHikePct:0, expenseSpikeMonthly:0 } },
   { id:"partner_income_gone", title:"Partner income gone", patch:{ monthsUnemployed:6, incomeDropPct:50, emergencyCost:0, rateHikePct:0, expenseSpikeMonthly:0 } },
@@ -339,6 +346,11 @@ function setDefaults(){
 }
 
 function resetAll(){
+  // ===== GA4: Calculator reset =====
+  trackEvent("calculator_reset", {
+    tool: "mortgage_risk_calculator"
+  });
+  
   setDefaults();
 
   // reset top button label if it was changed
@@ -397,6 +409,8 @@ function mountPresets(){
     btn.style.borderRadius = "999px";
     btn.textContent = p.title;
     btn.onclick = ()=>{
+      trackEvent("preset_applied", { preset_id: p.id });
+
       Object.entries(p.patch).forEach(([k,v])=>{
         const el = $(k);
         if(el) el.value = String(v);
@@ -561,6 +575,29 @@ function wire(){
   const resetTop = $("resetBtnTop");
   if (resetTop) {
     resetTop.addEventListener("click", resetAll);
+  }
+
+  // ===== GA4: Loan Amount entered =====
+  const loan = $("loanAmount");
+  if (loan && !loan.dataset.gaBound) {
+    loan.dataset.gaBound = "1";
+
+    loan.addEventListener("blur", () => {
+      const raw = String(loan.value || "").trim();
+      if (!raw) return;
+
+      const value = Number(raw);
+      if (!Number.isFinite(value) || value <= 0) return;
+
+      // fire only once per session (prevents spam)
+      oncePerSession("ga4_loan_amount_entered", () => {
+        trackEvent("home_price_entered", {
+          value,              // number
+          currency: "USD",    // optional
+          field: "loanAmount"
+        });
+      });
+    });
   }
 }
 
